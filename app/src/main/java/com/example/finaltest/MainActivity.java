@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 }else {
                     int qty = Integer.parseInt(quantity.getText().toString());
                     double t = qty * price;
-                    double percentage = 0.05 * price;
+                    double percentage = 0.5 * t;
                     if (qty < 15) {
                         totalAmount.setText(String.format("%.2f", t));
                     } else {
