@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     String countries [] = {"Canada","USA","England"};
 
     ArrayList<details> tempData = new ArrayList<>();
-
     public static double price = 0;
     public static String placeName = "";
 
@@ -123,6 +122,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
+    // this function is for alert box
+
     private void alertMethod(String title,String message , String button){
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this).setTitle(title).setMessage(message).setPositiveButton(button, new DialogInterface.OnClickListener() {
@@ -135,6 +136,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         alert.show();
     }
 
+    // fillling the data
     public void fillData(){
         data.add(new details(countries[0],"Ottawa","canada","Niagara Falls","niagra",100));
         data.add(new details(countries[0],"Ottawa","canada","CN Tower","cntower",30));
@@ -150,6 +152,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         data.add(new details(countries[2],"London","england","Hyde Park","hydepark",15));
     }
 
+    // this function return capital name
     public String getCapital(String cat){
         for (int i = 0; i<data.size(); i++){
             if (data.get(i).getCountryName().equals(cat)){
@@ -159,6 +162,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         return null;
     }
 
+    // this function return the name of the flag
     public  String getFlageImage (String cat){
         for (int i = 0; i<data.size(); i++){
             if (data.get(i).getCountryName().equals(cat)){
@@ -168,6 +172,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         return null;
     }
 
+    // this function fill the temp array with objects on the basis of country name
     public void fillTempData(String country){
         for (int i = 0;i<data.size();i++){
             if (data.get(i).getCountryName().equals(country)){
@@ -176,7 +181,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
     }
 
-
+// functon of spinner
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         capital.setText(getCapital(countries[position])); // setting capital name
@@ -187,7 +192,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         tempData.clear();
         fillTempData(countries[position]);
 
-        LV.setAdapter(new placeListRow(tempData,this));
+        LV.setAdapter(new placeListRow(tempData,this)); // placeListRow is the CUSTOM ADAPTER
 
 
 
@@ -198,10 +203,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
+    // this is the function of list view
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        price = tempData.get(position).getPrice();
-        placeName = tempData.get(position).getPlace();
+        price = tempData.get(position).getPrice(); // whichever row is selected with give the price in price variable
+        placeName = tempData.get(position).getPlace(); // on selecting row in list view  will put name of the place in placeNme variable
         Toast.makeText(this, ""+tempData.get(position).getPlace()+" Selected", Toast.LENGTH_SHORT).show();
     }
 }

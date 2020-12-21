@@ -29,14 +29,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
+        // confirming if the edit text are filled or not
         if (username.getText().toString().isEmpty() || password.getText().toString().isEmpty()){
             Toast.makeText(this, "Please Fill All the Details ", Toast.LENGTH_SHORT).show();
         }else{
-            if (username.getText().toString().equals("user1") && password.getText().toString().equals("password1")){
+            if (username.getText().toString().equals("user1") && password.getText().toString().equals("password1")){ // if username and password is correct
                 Intent intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
+                startActivity(intent);  // go to other activity
             }
-            else{
+            else{    // else show the error about wrong password and username
                 Toast.makeText(this, "Wrong Username Or Password", Toast.LENGTH_SHORT).show();
             }
         }

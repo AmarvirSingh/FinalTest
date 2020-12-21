@@ -10,6 +10,11 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+
+
+// this is the custom list  adapter of List view
+
+
 public class placeListRow extends BaseAdapter {
     private ArrayList<details> det = new ArrayList<>();
     LayoutInflater inflater;
